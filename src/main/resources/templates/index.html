@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Message Board</title>
+</head>
+<body>
+<h1>Mini Message Board</h1>
+<form th:action="@{/new}" method="post" th:object="${newPost}">
+    <label>
+        Post:
+        <input type="text" th:field="*{postMessage}">
+    </label>
+    <button type="submit">Submit</button>
+</form>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Post</th>
+    </tr>
+    <tr th:each="post : ${posts}">
+        <td th:text="${post.getPostMessage()}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
